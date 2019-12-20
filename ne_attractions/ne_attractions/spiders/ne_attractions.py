@@ -8,10 +8,12 @@ class NorthEastAttractionsSpider(scrapy.Spider):
     def parse(self, response):
         # Extract names/titles of attractions
         h4tags = response.css("h4::text").extract()
+        h4tags = filter(None, h4tags)
 
         # Extracted data
         for idx, bq in enumerate(response.css("blockquote")):
             data = bq.css("p.smaller_par::text").extract()
-        yield { "title": h4text[idx] }
+            data = filter(None, data)
+        yield { "title": h4tags[idx] }
 
 
