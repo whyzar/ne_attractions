@@ -7,7 +7,7 @@ class NorthEastAttractionsSpider(scrapy.Spider):
 
     def parse(self, response):
         data = {}
-        data['title'] = respodata['title'] = response.css('h4::text').extract()
+        data['title'] = response.css('h4::text').extract()
         data['address'] = response.css('p.smaller_par::text').extract()
         yield data
 
