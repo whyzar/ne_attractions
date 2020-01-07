@@ -11,7 +11,7 @@ class NorthEastAttractionsSpider(scrapy.Spider):
         data = {}
         data['title'] = response.css('h4::text').extract()
         data['address'] = response.css('p.smaller_par::text').extract()
-        data[val.encode('ascii',ignore) for val in data]
+        data[val.encode('ascii','ignore') for val in data]
         yield data
 
 
